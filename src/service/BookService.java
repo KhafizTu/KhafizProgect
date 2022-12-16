@@ -10,9 +10,9 @@ public interface BookService {
 
     List<Book> getAllBooks();
 
-    List<Book> getBooksByGenre(String genre);
+    String getBooksByGenre(String genre);
 
-    Book removeBookById(Long id);
+    Long removeBookById(Long id);
 
     List<Book> sortBooksByPriceInDescendingOrder();
 

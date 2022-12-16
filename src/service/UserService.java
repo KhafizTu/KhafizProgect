@@ -3,6 +3,7 @@ package service;
 import model.Book;
 import model.User;
 
+import java.lang.constant.Constable;
 import java.util.List;
 
 public interface UserService{
@@ -11,7 +12,7 @@ public interface UserService{
 
     List<User> findAllUsers();
 
-    User findUserById(Long id);
+    Constable findUserById(Long id);
 
     String removeUserByName(String name);
 
