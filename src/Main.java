@@ -3,7 +3,9 @@ import enums.Genre;
 import enums.Language;
 import model.Book;
 import model.User;
+import service.UserService;
 import service.impl.BookServiceImpl;
+import service.impl.UserServisImpl;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
@@ -21,33 +23,51 @@ public class Main {
         // Китептин чыккан жылы келечек убакыт болбошу керек.Болбосо DateTimeException ыргытсын.
         // Китептин автору бош болбошу керек. Болбосо EmptyStackException ыргытсын.
 
-        BigDecimal decimal = new BigDecimal(3000.00);
-        List<Book> books = new ArrayList<>();
 
         BookServiceImpl bookService = new BookServiceImpl();
 
-            Book word = new Book(Long.decode("12"), "Мир Жевотных", Genre.FANTASY, decimal, "Чарли Дюмуа", Language.ENGLISH, LocalDate.ofYearDay(1957, 12));
-            Book warAndPeace = new Book(Long.decode("23"), "Война и Мир", Genre.HISTORICAL, decimal, "Лев Толстой", Language.RUSSIAN, LocalDate.ofYearDay(1869, 10));
-            Book live = new Book(Long.decode("375"), "Жизнь после смерти", Genre.FANTASY, decimal, "Алекс Мёрти", Language.ENGLISH, LocalDate.ofYearDay(1957, 24));
-            Book harry = new Book(Long.decode("82"), "Гарри Потер", Genre.FANTASY, decimal, "Джоан Роулинг", Language.ENGLISH, LocalDate.ofYearDay(2001, 9));
-            Book right = new Book(Long.decode("67"), "Сила Разума", Genre.ROMANCE, decimal, "Николаичева Екатерина ", Language.ENGLISH, LocalDate.ofYearDay(2010, 18));
 
-        User user1 = new User(Long.decode("123"),"Khafiz","Turusbek uulu","khafiz@gmail.com","+996501167662", Gender.MALE,new BigDecimal(12000),books);
-        User user2 = new User(Long.decode("645"),"Bekjan","Jakanov","bekjan@gmail.com","+996507267753", Gender.MALE,new BigDecimal(8000),books);
-        User user3 = new User(Long.decode("123"),"Aziza","Samatova","aziza@gmail.com","+996700491871", Gender.FEMALE,new BigDecimal(1234),books);
+List<Book>books = new ArrayList<>(List.of(
+        new Book(Long.decode("12"), "Mир Жевотных", Genre.FANTASY, new BigDecimal(100), "Чарли Дюмуа", Language.ENGLISH, LocalDate.ofYearDay(1957, 12)),
+        new Book(Long.decode("23"), "Война и Мир", Genre.HISTORICAL, new BigDecimal(200), "Лев Толстой", Language.RUSSIAN, LocalDate.ofYearDay(1869, 10)),
+        new Book(Long.decode("375"), "Жизнь после смерти", Genre.FANTASY, new BigDecimal(300), "Алекс Мёрти", Language.ENGLISH, LocalDate.ofYearDay(1957, 24)),
+        new Book(Long.decode("82"), "Гарри Потер", Genre.FANTASY, new BigDecimal(400), "Джоан Роулинг", Language.ENGLISH, LocalDate.ofYearDay(2001, 9)),
+        new Book(Long.decode("67"), "Сила Разума", Genre.ROMANCE, new BigDecimal(500), "Николаичева Екатерина ", Language.ENGLISH, LocalDate.ofYearDay(2010, 18))));
 
 
-        books.add(word);
-        books.add(warAndPeace);
-        books.add(live);
-        books.add(harry);
-        books.add(right);
+List<User> users = new ArrayList<>(List.of(
+         new User(Long.decode("123"),"Khafiz","Turusbek uulu","khafiz@gmail.com","+996501167662", Gender.MALE,new BigDecimal(12000),books),
+         new User(Long.decode("645"),"Bekjan","Jakanov","bekjan@gmail.com","+996507267753", Gender.MALE,new BigDecimal(8000),books),
+         new User(Long.decode("123"),"Aziza","Samatova","aziza@gmail.com","+996700491871", Gender.FEMALE,new BigDecimal(1234),books)));
 
-        System.out.println(bookService.createBooks(Collections.singletonList(books.get(0))));
 
-        System.out.println(bookService.getAllBooks());
+            System.out.println();
+            System.out.println(bookService.createBooks(books));
+            System.out.println("Баардык буктарды чыгарат:");
+            System.out.println(bookService.getAllBooks());
+            System.out.println("Бир жанр дагы китептер: ");
+            System.out.println(bookService.getBooksByGenre("FANTASY"));
 
-        System.out.println(word.getAuthor());
+            //System.out.println(bookService.getBookByInitialLetter());
 
+            System.out.println("Кымбат китеп: ");
+            System.out.println(bookService.maxPriceBook());
+            System.out.println("Жылын чыгаруу: ");
+            System.out.println(bookService.filterBooksByPublishedYear());
+
+        System.out.println("USER: ");
+
+        UserServisImpl userServis = new UserServisImpl();
+
+        System.out.println();
+        System.out.println(userServis.createUser(users));
+        System.out.println("All User: ");
+        System.out.println(userServis.findAllUsers());
+        System.out.println("User Name: ");
+        System.out.println(userServis.removeUserByName("Khafiz"));
+        System.out.println("Book Name: ");
+        System.out.println(userServis.buyBooks("Война и Мир", books));
+        System.out.println("Gender: ");
+        userServis.groupUsersByGender();
     }
 }

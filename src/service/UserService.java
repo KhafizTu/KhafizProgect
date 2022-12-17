@@ -12,7 +12,7 @@ public interface UserService{
 
     List<User> findAllUsers();
 
-    Constable findUserById(Long id);
+    User findUserById(Long id);
 
     String removeUserByName(String name);
 
