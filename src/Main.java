@@ -69,5 +69,9 @@ List<User> users = new ArrayList<>(List.of(
         System.out.println(userServis.buyBooks("Война и Мир", books));
         System.out.println("Gender: ");
         userServis.groupUsersByGender();
+        System.out.println("sasasasa");
+        System.out.println(books.get(0));
+
+        userServis.updateUser(12,12l);
     }
 }

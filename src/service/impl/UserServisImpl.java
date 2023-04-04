@@ -5,7 +5,6 @@ import model.Book;
 import model.User;
 import service.UserService;
 
-import java.lang.constant.Constable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class UserServisImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Long id) throws IllegalStateException{
+    public void updateUser(int i, Long id) throws IllegalStateException{
         Scanner scanner = new Scanner(System.in);
         System.out.println();
 

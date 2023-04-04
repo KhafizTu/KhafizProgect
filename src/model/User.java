@@ -105,6 +105,6 @@ public class User {
                 ", gender=" + gender +
                 ", money=" + money +
                 ", books=" + books +
-                '}';
+                '}'  + "\n";
     }
 }

@@ -3,7 +3,6 @@ package service;
 import model.Book;
 import model.User;
 
-import java.lang.constant.Constable;
 import java.util.List;
 
 public interface UserService{
@@ -16,7 +15,7 @@ public interface UserService{
 
     String removeUserByName(String name);
 
-    void updateUser(Long id);//kaisil pole ozgorsun dep surap, oshogo jarasha ozgortuu
+    void updateUser(int i, Long id);//kaisil pole ozgorsun dep surap, oshogo jarasha ozgortuu
 
     void groupUsersByGender();
 
